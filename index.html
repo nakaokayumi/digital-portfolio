@@ -264,17 +264,55 @@
         font-size: 28px;
         cursor: pointer;
     }
+        /* Card Layout */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+    
+    .artifact-card {
+        background: #0d0d0d;
+        border: 1px solid #1a1a1a;
+        padding: 25px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    /* Navigation Hover */
+    nav ul li a:hover {
+        color: #00ff41;
+        text-shadow: 0 0 10px #00ff41;
+    }
+    
+    /* Modals (The Pop-up Windows) */
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 9999; 
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.95);
+    }
+    
+    .modal-content {
+        margin: 5% auto;
+        width: 90%;
+        max-width: 800px;
+    }
     </style>
 </head>
 <body>
 
     <nav>
-        <ul>
-            <li><a href="#projects">./Projects</a></li>
-            <li><a href="#side-missions">./Side_Missions</a></li> 
-            <li><a href="#experience">./Experience</a></li>
-            <li><a href="#contact">./Skills</a></li>
-            <li><a href="#contact">./Connect</a></li>
+        <ul style="list-style: none;">
+            <li><span style="color:#00ff41">></span> <a href="#projects">./Projects</a></li>
+            <li><span style="color:#00ff41">></span> <a href="#side-missions" style="color:#0000ff; text-decoration:underline;">./Side_Missions</a></li>
+            <li><span style="color:#00ff41">></span> <a href="#experience">./Experience</a></li>
+            <li><span style="color:#00ff41">></span> <a href="#skills">./Skills</a></li>
+            <li><span style="color:#00ff41">></span> <a href="#contact">./Connect</a></li>
         </ul>
     </nav>
 
@@ -314,22 +352,21 @@
     </section>
 
     <section id="side-missions">
-        <h2>./Side_Missions</h2>
+        <h2 style="color: #ff3131;">./Side_Missions</h2>
         <div class="skills-grid">
             <div class="artifact-card">
-                <h4 style="color: var(--terminal-green);">[ PROJECT: HANGMAN_V2 ]</h4>
-                <p style="color: var(--text-gray);">Logic-based Python engine featuring dynamic ASCII state rendering.</p>
-                <button onclick="document.getElementById('hangmanModal').style.display='block'" class="terminal-btn">
-                    <i class="fas fa-code"></i> VIEW SOURCE
-                </button>
+                <h4 style="color: #00ff41;">[ PROJECT: HANGMAN_V2 ]</h4>
+                <p style="color: #888;">Logic-based Python engine featuring dynamic ASCII state rendering.</p>
+                <div style="background:#000; padding:10px; border:1px solid #333; margin-bottom:15px; font-family:monospace; font-size:12px;">
+                    Drawing[6]: (" 😟 ", "💪|🤳", "🦵 🦶")
+                </div>
+                <button onclick="document.getElementById('hangmanModal').style.display='block'" class="terminal-btn">VIEW SOURCE</button>
             </div>
     
             <div class="artifact-card">
-                <h4 style="color: var(--terminal-green);">[ EVIDENCE: LOG_CAPTURE ]</h4>
-                <p style="color: var(--text-gray);">Forensic audit of a SQL injection attempt and mitigation report.</p>
-                <button onclick="document.getElementById('logModal').style.display='block'" class="terminal-btn">
-                    <i class="fas fa-file-medical-alt"></i> VIEW LOGS
-                </button>
+                <h4 style="color: #00ff41;">[ EVIDENCE: LOG_CAPTURE ]</h4>
+                <p style="color: #888;">Wireshark packet analysis logs from the DIS Sentinel Hackathon.</p>
+                <button onclick="document.getElementById('logModal').style.display='block'" class="terminal-btn">VIEW LOGS</button>
             </div>
         </div>
     </section>
@@ -499,22 +536,79 @@
                 </div>
                 <div class="terminal-body" style="height: 500px; overflow-y: scroll; background: #050505;">
         <pre style="color: #d1d1d1; margin: 0; font-size: 0.85rem; font-family: monospace; white-space: pre-wrap;">
-        import random
-        # Database for word selection
-        animals = ("baboon", "flamingo", "lioness", "capybara")
+       import random
+        animals = ("baboon", "flamingo", "terrapin", "lioness", "capybara", "beaver", "iguana", "jaguar", "antelope", "chimpanzee", "pangolin", "platypus", "kangaroo", "schnauzer", "salmon", "ostrich", "cougar", "buffalo", "grouper", "reindeer", "chihuahua", "chameleon", "orangutan", "chinchilla")
         
-        # ASCII Art with Emojis
-        drawing = {
-            0: ("   ", "   ", "   "),
-            6: (" 😟 ", "💪|🤳", "🦵 🦶")
-        }
+        drawing = {0: ("   ",
+                           "   ",
+                           "   "),
+                       1: (" 😒 ",
+                           "   ",
+                           "   "),
+                       2: (" 😒 ",
+                           "  | ",
+                           "   "),
+                       3: (" 😒 ",
+                           "🫲| ",
+                           "   "),
+                       4: (" 😒 ",
+                           "🫲|🤌",
+                           "   "),
+                       5: (" 😒 ",
+                           "🫲|🤌",
+                           "🦶  "),
+                       6: (" 😒 ",
+                           "🫲|🤌",
+                           "🦶 🦵")}
+        
+        def display_man(wrong_guesses):
+            for line in drawing[wrong_guesses]:
+                print(line)
+        
+        def display_hint(hint):
+            print(" ".join(hint))
+        
+        def display_answer(answer):
+            print(" ".join(answer))
         
         def main():
             answer = random.choice(animals)
             hint = ["_"] * len(answer)
             wrong_guesses = 0
+            guessed_letters = set()
             is_running = True
-            # Game Logic continues...
+        
+            while is_running:
+                display_man(wrong_guesses)
+                display_hint(hint)
+                guess = input(f"enter a letter ({len(answer)}) letters: ").lower()
+        
+                if guess in answer:
+                    for index in range(len(answer)):
+                        if answer[index] == guess:
+                            hint[index] = guess
+                else:
+                    wrong_guesses += 1
+        
+                if "_" not in hint:
+                    display_man(wrong_guesses)
+                    display_answer(answer)
+                    print()
+                    print("**********")
+                    print("YOU WIN !!")
+                    print("**********")
+                    is_running = False
+                elif wrong_guesses >= len(drawing) - 1:
+                    display_man(wrong_guesses)
+                    display_answer(answer)
+                    print()
+                    print("***********")
+                    print("YOU LOSE !!")
+                    print("***********")
+                    is_running = False
+        
+        if __name__ == "__main__":
+            main()
         </pre>
                     </div>
                 </div>
