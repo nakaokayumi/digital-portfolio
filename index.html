@@ -143,6 +143,44 @@
             box-shadow: 0 0 20px rgba(255, 49, 49, 0.2);
             transform: translateY(-5px); /* Lifts the box up */
         }
+
+        /* Artifact / Side Mission Styling */
+        .artifact-card {
+            border: 1px solid #333;
+            padding: 20px;
+            background: #0a0a0a;
+            transition: 0.3s;
+            border-radius: 4px;
+        }
+        
+        .artifact-card:hover {
+            border-color: var(--neon-red);
+            box-shadow: 0 0 15px rgba(255, 49, 49, 0.2);
+        }
+        
+        /* Modal for Code View */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .modal-content {
+            margin: 5% auto;
+            width: 80%;
+            max-width: 800px;
+        }
+        
+        .close-btn {
+            color: var(--neon-red);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -190,6 +228,72 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <section id="other-projects">
+        <h2>./Side_Missions</h2>
+        <div class="skills-grid">
+            
+            <div class="artifact-card">
+                <h4 style="color: var(--terminal-green); margin-top: 0;">[ PROJECT: HANGMAN_V2 ]</h4>
+                <p style="font-size: 0.85rem; color: var(--text-gray);">
+                    Logic-based Python engine featuring dynamic ASCII state rendering.
+                </p>
+                <div style="background: #000; padding: 10px; border: 1px solid #222; margin-bottom: 15px;">
+                    <code style="color: #ce9178; font-size: 0.8rem;">Drawing[6]: (" 😟 ", "💪|🤳", "🦵 🦶")</code>
+                </div>
+                
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="document.getElementById('hangmanModal').style.display='block'" class="terminal-btn" style="font-size: 0.7rem;">
+                        <i class="fas fa-code"></i> VIEW SOURCE
+                    </button>
+                    <a href="https://github.com/nakaokayumi" target="_blank" class="terminal-btn" style="font-size: 0.7rem;">
+                        <i class="fab fa-github"></i> REPO
+                    </a>
+                </div>
+            </div>
+    
+            <div class="artifact-card">
+                <h4 style="color: var(--terminal-green); margin-top: 0;">[ EVIDENCE: LOG_CAPTURE ]</h4>
+                <p style="font-size: 0.85rem; color: var(--text-gray);">
+                    Wireshark packet analysis logs from the DIS Sentinel Hackathon.
+                </p>
+                <br>
+                <a href="#" class="terminal-btn" style="font-size: 0.7rem;">
+                    <i class="fas fa-file-medical-alt"></i> VIEW LOGS
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <div id="hangmanModal" class="modal">
+        <div class="modal-content">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    <span style="color: #666; font-size: 0.8rem; margin-left: 10px;">hangman.py</span>
+                    <span class="close-btn" onclick="document.getElementById('hangmanModal').style.display='none'">&times;</span>
+                </div>
+                <div class="terminal-body" style="max-height: 500px; overflow-y: auto;">
+    <pre style="color: #d1d1d1; margin: 0; font-size: 0.85rem;">
+    <span style="color: #569cd6;">import</span> random
+    
+    <span style="color: #6a9955;"># Animal database for word selection</span>
+    animals = (<span style="color: #ce9178;">"baboon"</span>, <span style="color: #ce9178;">"flamingo"</span>, <span style="color: #ce9178;">"lioness"</span>, <span style="color: #ce9178;">"capybara"</span>)
+    
+    drawing = {
+        <span style="color: #b5cea8;">0</span>: (<span style="color: #ce9178;">"   "</span>, <span style="color: #ce9178;">"   "</span>, <span style="color: #ce9178;">"   "</span>),
+        <span style="color: #b5cea8;">6</span>: (<span style="color: #ce9178;">" 😟 "</span>, <span style="color: #ce9178;">"💪|🤳"</span>, <span style="color: #ce9178;">"🦵 🦶"</span>)
+    }
+    
+    <span style="color: #569cd6;">def</span> <span style="color: #dcdcaa;">main</span>():
+        answer = random.choice(animals)
+        <span style="color: #6a9955;"># Logic continues...</span>
+    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
     </section>
 
     <section id="experience">
@@ -259,25 +363,25 @@
         </div>
     </section>
 
-    <section id="contact">
+   <section id="contact">
         <h2>./Connect</h2>
         <div class="terminal-window">
             <div class="terminal-body">
-                <p>
-                    <i class="fas fa-envelope" style="color: var(--neon-red); width: 20px;"></i>
-                    <span style="color: #00ff41;">Email: </span>
-                    <a href="mailto:nakaoka.yumi.sg@gmail.com" style="color: #ff3131; text-decoration: none; border-bottom: 1px dashed transparent;" onmouseover="this.style.borderBottom='1px dashed #ff3131'" onmouseout="this.style.borderBottom='1px dashed transparent'">
-                        nakaoka.yumi.sg@gmail.com
-                    </a>
-                </p>
+                <p><i class="fas fa-envelope" style="color: var(--neon-red); width: 20px;"></i> <span style="color: #00ff41;">Email: </span><a href="mailto:nakaoka.yumi.sg@gmail.com" style="color: #ff3131; text-decoration: none;">nakaoka.yumi.sg@gmail.com</a></p>
                 <p><i class="fas fa-phone" style="color: var(--neon-red); width: 20px;"></i> <span style="color: #00ff41;">Phone: </span>+65 8750 9811</p>
                 <p><i class="fas fa-network-wired" style="color: var(--neon-red); width: 20px;"></i> <span style="color: #00ff41;">Location: </span>Singapore</p>
-                <br>
-                <p style="color: #00ff41;"><i class="fas fa-terminal"></i> > [MESSAGE] Ready for deployment at Grab.</p>
+                
+                <div style="border-top: 1px solid #222; margin-top: 20px; padding-top: 20px;">
+                    <p style="color: var(--terminal-green);">
+                        <span style="font-weight: bold;">>_</span> 
+                        <span style="margin-left: 10px;">> [MESSAGE] <span style="color: #fff;">Ready for deployment at Grab.</span></span>
+                        <span class="cursor" style="display: inline-block; width: 10px; height: 18px; background: var(--terminal-green); vertical-align: middle; animation: blink 1s infinite;"></span>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
-
+    
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
         new Typed('#typed', {
