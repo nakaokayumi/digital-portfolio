@@ -194,7 +194,48 @@
             content: "> ";
             color: var(--terminal-green);
         }
+        .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+        .skill-category {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            padding: 20px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
         
+        .skill-category:hover {
+            border-color: var(--neon-red);
+            box-shadow: 0 0 15px rgba(255, 49, 49, 0.1);
+        }
+        
+        .skill-category h4 {
+            color: var(--neon-red);
+            margin-top: 0;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .tag {
+            background: #1a1a1a;
+            color: var(--terminal-green);
+            padding: 4px 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body>
@@ -204,6 +245,7 @@
         <div>
             <a href="#projects">PROJECTS</a>
             <a href="#experience">EXPERIENCE</a>
+            <a href="#skills">SKILLS</a>
             <a href="#contact">CONTACT</a>
         </div>
     </nav>
@@ -263,6 +305,43 @@
                     <li>Managed critical sample traceability, maintaining a zero-error audit log.</li>
                     <li>Applied analytical troubleshooting to resolve production-line anomalies.</li>
                 </ul>
+            </div>
+    
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>./Technical_Arsenal</h2>
+        <div class="skills-grid">
+            
+            <div class="skill-category">
+                <h4>Security Operations</h4>
+                <div class="skill-tags">
+                    <span class="tag">Incident Response</span>
+                    <span class="tag">Threat Triage</span>
+                    <span class="tag">MITRE ATT&CK</span>
+                    <span class="tag">Wireshark</span>
+                </div>
+            </div>
+    
+            <div class="skill-category">
+                <h4>Development & IAM</h4>
+                <div class="skill-tags">
+                    <span class="tag">Python (Flask)</span>
+                    <span class="tag">Identity Access Mgmt</span>
+                    <span class="tag">OAuth 2.0</span>
+                    <span class="tag">SQL Injection Defense</span>
+                </div>
+            </div>
+    
+            <div class="skill-category">
+                <h4>Compliance & QA</h4>
+                <div class="skill-tags">
+                    <span class="tag">PDPA Compliance</span>
+                    <span class="tag">ISO Standards</span>
+                    <span class="tag">Audit Logging</span>
+                    <span class="tag">SOP Development</span>
+                </div>
             </div>
     
         </div>
