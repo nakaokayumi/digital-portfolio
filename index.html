@@ -230,7 +230,19 @@
         /* Utilities */
         .tag { background: #1a1a1a; color: var(--terminal-green); padding: 5px 10px; font-size: 0.75rem; margin: 4px; display: inline-block; border: 1px solid #333; }
         ul.bullet-list li::before { content: "> "; color: var(--terminal-green); margin-right: 8px; }
-    
+
+        .bullet-list {
+            list-style-type: none; /* Removes the standard dots */
+            padding-left: 0;       /* Removes the default left indent */
+            margin-left: 0;
+        }
+        
+        .bullet-list li {
+            margin-bottom: 10px;   /* Adds a little breathing room between points */
+            display: flex;
+            align-items: flex-start;
+        }
+        
     </style>
 </head>
 <body>
@@ -494,6 +506,24 @@ if __name__ == "__main__":
             </div>
         </div>
     </div>
+    <div id="skillModal" class="modal">
+        <div class="modal-content">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="dot red" onclick="closeModal()"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                    <span id="modal-title" style="margin-left: 10px; color: #666; font-size: 0.8rem; font-family: monospace;"></span>
+                    <span class="close-btn" onclick="closeModal()" style="margin-right: 10px; line-height: 20px;">&times;</span>
+                </div>
+                <div class="terminal-body" style="height: auto; min-height: 200px;">
+                    <div id="modal-body-text" style="color: var(--terminal-green); font-family: 'Consolas', monospace;"></div>
+                    <br><br>
+                    <button class="terminal-btn" onclick="closeModal()">CLOSE_SESSION</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
@@ -545,6 +575,7 @@ if __name__ == "__main__":
             if (event.target == hangmanModal) hangmanModal.style.display = "none";
             if (event.target == logModal) logModal.style.display = "none";
         }
+        
     </script>
 </body>
 </html>
