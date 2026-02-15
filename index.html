@@ -140,6 +140,21 @@
             text-shadow: 0 0 8px #00ff41; /* Makes it glow green */
             transform: translateX(5px);   /* Slight nudge to show interaction */
         }
+
+        .terminal-link {
+            color: #00ff41; 
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-block;
+            transition: 0.3s;
+        }
+    
+        /* This makes it "Show" that it is a button on hover */
+        .terminal-link:hover {
+            color: #ff3131; /* Changes to red on hover */
+            text-shadow: 0 0 10px #ff3131;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -197,22 +212,23 @@
         </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" style="min-height: 100vh; padding-top: 100px;">
         <h2>./Connect</h2>
-        <div class="terminal-window" style="max-width: 500px;">
+        <div class="terminal-window" style="border: 1px solid #333; padding: 20px; background: #000;">
             <div class="terminal-body">
+                
                 <p>Command: 
-                    <p>Command: 
-                        <a href="#home" class="terminal-btn">
-                            <span>finger nakaoka_yumi</span>
-                        </a>
-                    </p>
+                    <a href="#home" class="terminal-link">
+                        finger nakaoka_yumi
+                    </a>
                 </p>
-                <p>Email: <a href="mailto:nakaoka.yumi.sg@gmail.com" style="color: var(--neon-red); text-decoration:none;">nakaoka.yumi.sg@gmail.com</a></p>
-                <p>Phone: +65 8750 9811</p>
-                <p>Location: Singapore</p>
-                <br>
-                <p>> [MESSAGE] Ready for deployment at Grab.</p>
+    
+                <p>Email: 
+                    <a href="mailto:nakaoka.yumi.sg@gmail.com" class="terminal-link" style="color: #ff3131;">
+                        nakaoka.yumi.sg@gmail.com
+                    </a>
+                </p>
+    
             </div>
         </div>
     </section>
