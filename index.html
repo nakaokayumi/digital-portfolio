@@ -133,6 +133,16 @@
 
         ul { list-style: none; padding: 0; color: var(--text-gray); }
         li::before { content: "> "; color: var(--terminal-green); margin-right: 8px; }
+
+        .skill-category {
+            cursor: pointer; /* Changes mouse to a hand for the whole box */
+        }
+        
+        .skill-category:hover {
+            border-color: var(--neon-red);
+            box-shadow: 0 0 20px rgba(255, 49, 49, 0.2);
+            transform: translateY(-5px); /* Lifts the box up */
+        }
     </style>
 </head>
 <body>
@@ -209,18 +219,43 @@
     <section id="skills">
         <h2>./Technical_Arsenal</h2>
         <div class="skills-grid">
+            
             <div class="skill-category">
                 <h4 style="color: var(--neon-red); margin-top: 0;"><i class="fas fa-shield-alt"></i> Security Ops</h4>
-                <div class="tag">Incident Response</div><div class="tag">Wireshark</div><div class="tag">Threat Hunting</div>
+                <div class="skill-tags">
+                    <span class="tag">Incident Response</span>
+                    <span class="tag">Threat Triage</span>
+                </div>
+                <br>
+                <a href="#projects" class="terminal-btn" style="font-size: 0.7rem; margin-top: 10px; padding: 4px 8px;">
+                    <i class="fas fa-search"></i> VIEW EVIDENCE
+                </a>
             </div>
+    
             <div class="skill-category">
                 <h4 style="color: var(--neon-red); margin-top: 0;"><i class="fas fa-code"></i> Dev & IAM</h4>
-                <div class="tag">Python</div><div class="tag">OAuth 2.0</div><div class="tag">Flask</div>
+                <div class="skill-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">OAuth 2.0</span>
+                </div>
+                <br>
+                <a href="https://github.com/nakaokayumi" target="_blank" class="terminal-btn" style="font-size: 0.7rem; margin-top: 10px; padding: 4px 8px;">
+                    <i class="fab fa-github"></i> VIEW CODE
+                </a>
             </div>
+    
             <div class="skill-category">
                 <h4 style="color: var(--neon-red); margin-top: 0;"><i class="fas fa-file-contract"></i> Compliance</h4>
-                <div class="tag">PDPA</div><div class="tag">ISO Audit</div><div class="tag">SIEM</div>
+                <div class="skill-tags">
+                    <span class="tag">PDPA</span>
+                    <span class="tag">ISO Audit</span>
+                </div>
+                <br>
+                <a href="#experience" class="terminal-btn" style="font-size: 0.7rem; margin-top: 10px; padding: 4px 8px;">
+                    <i class="fas fa-history"></i> VIEW LOGS
+                </a>
             </div>
+    
         </div>
     </section>
 
