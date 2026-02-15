@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nakaoka Yumi | Cybersecurity Analyst</title>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <style>
         :root {
             --bg-black: #050505;
@@ -15,10 +14,7 @@
             --terminal-green: #00ff41;
         }
 
-        /* 1. Added Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg-black);
@@ -43,8 +39,21 @@
         }
 
         nav .logo { color: var(--neon-red); font-weight: 900; letter-spacing: 2px; }
-        nav a { color: white; text-decoration: none; margin-left: 25px; font-size: 0.8rem; letter-spacing: 1px; }
-        nav a:hover { color: var(--neon-red); }
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            margin-left: 25px; 
+            font-size: 0.8rem; 
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+        nav a:hover { 
+            color: var(--neon-red); 
+            border: 1px solid var(--neon-red);
+            box-shadow: 0 0 10px var(--neon-red);
+        }
 
         /* Hero Section */
         header {
@@ -56,186 +65,48 @@
             background: radial-gradient(circle at center, #1a0505 0%, #050505 100%);
         }
 
-        .typing-container { font-family: 'Courier New', Courier, monospace; font-size: 1.5rem; color: var(--text-gray); height: 50px; }
+        .typing-container { font-family: 'Courier New', monospace; font-size: 1.5rem; color: var(--text-gray); height: 50px; }
         header h1 { font-size: 4.5rem; margin: 10px 0; color: white; }
-        header h1 span { color: var(--neon-red); }
+        header h1 span { color: var(--neon-red); text-shadow: 0 0 20px rgba(255, 49, 49, 0.4); }
 
-        /* Project Terminal Style */
+        /* Sections */
+        section { padding: 100px 10%; min-height: 80vh; }
+        h2 { color: var(--neon-red); text-transform: uppercase; font-size: 1.8rem; margin-bottom: 40px; border-bottom: 1px solid #222; display: inline-block; }
+
+        /* Terminal Window */
         .terminal-window {
             background: #000;
             border: 1px solid #333;
             border-radius: 6px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-top: 40px;
         }
-
-        .terminal-header {
-            background: #1a1a1a;
-            padding: 10px;
-            display: flex;
-            gap: 8px;
-            border-radius: 6px 6px 0 0;
-        }
-
+        .terminal-header { background: #1a1a1a; padding: 10px; display: flex; gap: 8px; border-radius: 6px 6px 0 0; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
         .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
-
         .terminal-body { padding: 20px; font-family: 'Consolas', monospace; color: var(--terminal-green); }
-        .command { color: #fff; }
 
-        /* Sections */
-        section { 
-            padding: 100px 10%; 
-            min-height: 80vh; /* 2. Added height so links have room to scroll */
+        /* Timeline */
+        .timeline { border-left: 2px solid var(--grab-red); margin-left: 20px; padding-left: 30px; }
+        .exp-item { position: relative; margin-bottom: 50px; }
+        .exp-item::before {
+            content: ""; position: absolute; left: -41px; top: 5px; width: 20px; height: 20px;
+            background: var(--bg-black); border: 2px solid var(--neon-red); border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-red);
         }
-        h2 { color: var(--neon-red); text-transform: uppercase; font-size: 1.8rem; margin-bottom: 40px; border-bottom: 1px solid #222; display: inline-block; }
+        .exp-item h3 { color: white; margin: 0; }
+        .exp-item .date { color: var(--neon-red); font-size: 0.9rem; margin-bottom: 10px; display: block; }
+
+        /* Skills */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .skill-category { background: #0a0a0a; border: 1px solid #222; padding: 20px; transition: 0.3s; }
+        .skill-category:hover { border-color: var(--neon-red); }
+        .tag { background: #1a1a1a; color: var(--terminal-green); padding: 4px 10px; font-size: 0.8rem; margin: 4px; display: inline-block; }
 
         .btn {
-            background: transparent;
-            color: var(--neon-red);
-            border: 1px solid var(--neon-red);
-            padding: 12px 30px;
-            text-decoration: none;
-            transition: 0.3s;
-            display: inline-block;
-            margin-top: 20px;
+            background: transparent; color: var(--neon-red); border: 1px solid var(--neon-red);
+            padding: 12px 30px; text-decoration: none; transition: 0.3s; display: inline-block; margin-top: 20px;
         }
-
         .btn:hover { background: var(--neon-red); color: white; box-shadow: 0 0 15px var(--neon-red); }
-
-        .exp-item { margin-bottom: 30px; border-left: 2px solid var(--grab-red); padding-left: 20px; }
-        .exp-item h3 { color: white; margin-bottom: 5px; }
-        .exp-item span { color: var(--neon-red); font-size: 0.9rem; }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-            border: 1px solid transparent;
-            transition: 0.3s;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-        
-        nav a:hover {
-            color: var(--neon-red);
-            border: 1px solid var(--neon-red);
-            box-shadow: 0 0 10px var(--neon-red);
-        }
-
-        .terminal-cmd:hover {
-            text-shadow: 0 0 10px var(--neon-red);
-            text-decoration: underline;
-        }
-
-        .terminal-btn {
-            text-decoration: none; /* Removes the underline */
-            color: #00ff41;        /* Keeps it terminal green */
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-        
-        .terminal-btn:hover {
-            cursor: pointer;       /* Changes arrow to a hand icon */
-            text-shadow: 0 0 8px #00ff41; /* Makes it glow green */
-            transform: translateX(5px);   /* Slight nudge to show interaction */
-        }
-
-        /* Container for the timeline */
-        .timeline {
-            border-left: 2px solid var(--grab-red);
-            margin-left: 20px;
-            padding-left: 30px;
-            position: relative;
-        }
-        
-        /* The glowing dots for each entry */
-        .exp-item {
-            position: relative;
-            margin-bottom: 50px;
-        }
-        
-        .exp-item::before {
-            content: "";
-            position: absolute;
-            left: -41px;
-            top: 5px;
-            width: 20px;
-            height: 20px;
-            background: var(--bg-black);
-            border: 2px solid var(--neon-red);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--neon-red);
-        }
-        
-        .exp-item h3 {
-            margin: 0;
-            font-size: 1.4rem;
-            color: #fff;
-            letter-spacing: 1px;
-        }
-        
-        .exp-item .date {
-            color: var(--neon-red);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            display: block;
-            margin-bottom: 10px;
-        }
-        
-        .exp-item ul {
-            list-style: none;
-            padding: 0;
-            color: var(--text-gray);
-            line-height: 1.6;
-        }
-        
-        .exp-item li::before {
-            content: "> ";
-            color: var(--terminal-green);
-        }
-        .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
-}
-
-        .skill-category {
-            background: #0a0a0a;
-            border: 1px solid #222;
-            padding: 20px;
-            border-radius: 4px;
-            transition: 0.3s;
-        }
-        
-        .skill-category:hover {
-            border-color: var(--neon-red);
-            box-shadow: 0 0 15px rgba(255, 49, 49, 0.1);
-        }
-        
-        .skill-category h4 {
-            color: var(--neon-red);
-            margin-top: 0;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-        
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .tag {
-            background: #1a1a1a;
-            color: var(--terminal-green);
-            padding: 4px 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.8rem;
-            border-radius: 2px;
-        }
     </style>
 </head>
 <body>
@@ -251,14 +122,10 @@
     </nav>
 
     <header id="home">
-        <div class="typing-container">
-            <span id="typed"></span>
-        </div>
+        <div class="typing-container"><span id="typed"></span></div>
         <h1>NAKAOKA <span>YUMI</span></h1>
         <p style="max-width: 600px; color: var(--text-gray);">Cybersecurity & Digital Forensics student specializing in <strong>Identity Access Management</strong> and <strong>Incident Response</strong>. Audit-ready mindset with industrial QA experience.</p>
-        <div>
-            <a href="#projects" class="btn">INITIALIZE SEARCH</a>
-        </div>
+        <a href="#projects" class="btn">INITIALIZE SEARCH</a>
     </header>
 
     <section id="projects">
@@ -268,13 +135,12 @@
                 <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
             </div>
             <div class="terminal-body">
-                <p><span class="command">yumi@sec:~$</span> run analyze_project "Secure IAM Portal"</p>
+                <p><span style="color:white">yumi@sec:~$</span> run analyze_project "Secure IAM Portal"</p>
                 <p>> [STATUS] Analyzing Architecture...</p>
                 <p>> [SEC] PBKDF2 Hashing: <span style="color:white">ENABLED</span></p>
                 <p>> [SEC] SQLi Prevention: <span style="color:white">ACTIVE</span></p>
                 <p>> [COMPLIANCE] PDPA Audit Logging: <span style="color:white">VERIFIED</span></p>
-                <p style="color: var(--text-gray); margin-top: 20px;">Built with Python/Flask to demonstrate OWASP mitigation and session integrity for enterprise platforms like Grab.</p>
-                <a href="https://nakaokayumi.github.io/secure-identity-portal/" style="color: var(--neon-red); text-decoration: none;">[VIEW PROJECT]</a>
+                <p style="color: var(--text-gray); margin-top: 20px;">Built with Python/Flask to demonstrate OWASP mitigation and session integrity.</p>
                 <a href="https://github.com/nakaokayumi/secure-identity-portal" style="color: var(--neon-red); text-decoration: none;">[VIEW REPOSITORY]</a>
             </div>
         </div>
@@ -282,97 +148,62 @@
 
     <section id="experience">
         <h2>./Professional_Log</h2>
-        
         <div class="timeline">
-            
             <div class="exp-item">
                 <span class="date">[ 2024 - PRESENT ]</span>
                 <h3>DIS Sentinel Programme</h3>
                 <p style="color: var(--neon-red); font-weight: bold;">Cyber Defense & Incident Response</p>
                 <ul>
-                    <li>Secured 3rd place in the Red Team Hackathon among 50+ participants.</li>
-                    <li>Conducted deep-dive analysis into the Cyber Attack Lifecycle (MITRE ATT&CK).</li>
-                    <li>Developed strategies for threat triage and vulnerability mitigation.</li>
+                    <li>Secured 3rd place in the Red Team Hackathon.</li>
+                    <li>MITRE ATT&CK Framework deep-dive analysis.</li>
                 </ul>
             </div>
-    
             <div class="exp-item">
                 <span class="date">[ 2020 - 2022 ]</span>
                 <h3>Kimberly Clark Asia Pacific</h3>
                 <h3>Quality Technician</h3>
                 <ul>
-                    <li>Ensured 100% compliance with ISO standards and industrial SOPs.</li>
-                    <li>Managed critical sample traceability, maintaining a zero-error audit log.</li>
-                    <li>Applied analytical troubleshooting to resolve production-line anomalies.</li>
+                    <li>100% compliance with ISO standards.</li>
+                    <li>Zero-error audit log management.</li>
                 </ul>
             </div>
-    
         </div>
     </section>
 
     <section id="skills">
         <h2>./Technical_Arsenal</h2>
         <div class="skills-grid">
-            
             <div class="skill-category">
-                <h4>Security Operations</h4>
-                <div class="skill-tags">
-                    <span class="tag">Incident Response</span>
-                    <span class="tag">Threat Triage</span>
-                    <span class="tag">MITRE ATT&CK</span>
-                    <span class="tag">Wireshark</span>
-                </div>
+                <h4 style="color: var(--neon-red);">Security Ops</h4>
+                <div class="tag">Incident Response</div><div class="tag">Wireshark</div>
             </div>
-    
             <div class="skill-category">
-                <h4>Development & IAM</h4>
-                <div class="skill-tags">
-                    <span class="tag">Python (Flask)</span>
-                    <span class="tag">Identity Access Mgmt</span>
-                    <span class="tag">OAuth 2.0</span>
-                    <span class="tag">SQL Injection Defense</span>
-                </div>
+                <h4 style="color: var(--neon-red);">Dev & IAM</h4>
+                <div class="tag">Python</div><div class="tag">OAuth 2.0</div>
             </div>
-    
             <div class="skill-category">
-                <h4>Compliance & QA</h4>
-                <div class="skill-tags">
-                    <span class="tag">PDPA Compliance</span>
-                    <span class="tag">ISO Standards</span>
-                    <span class="tag">Audit Logging</span>
-                    <span class="tag">SOP Development</span>
-                </div>
+                <h4 style="color: var(--neon-red);">Compliance</h4>
+                <div class="tag">PDPA</div><div class="tag">ISO Audit</div>
             </div>
-    
         </div>
     </section>
 
-    <section id="contact" style="min-height: 100vh; padding-top: 100px;">
+    <section id="contact">
         <h2>./Connect</h2>
-        <div class="terminal-window" style="border: 1px solid #333; padding: 20px; background: #000;">
+        <div class="terminal-window" style="padding: 20px;">
             <div class="terminal-body">
-                <p>
-                    <span style="color: #00ff41;">Email: </span>
-                    <a href="mailto:nakaoka.yumi.sg@gmail.com" style="color: #ff3131; text-decoration: none;">
-                        nakaoka.yumi.sg@gmail.com
-                    </a>
-                </p>
-            
+                <p><span style="color: #00ff41;">Email: </span><a href="mailto:nakaoka.yumi.sg@gmail.com" style="color: #ff3131; text-decoration: none;">nakaoka.yumi.sg@gmail.com</a></p>
                 <p><span style="color: #00ff41;">Phone: </span>+65 8750 9811</p>
-            
                 <p><span style="color: #00ff41;">Location: </span>Singapore</p>
-                
                 <br>
-                
                 <p style="color: #00ff41;">> [MESSAGE] Ready for deployment at Grab.</p>
             </div>
         </div>
     </section>
 
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
     <script>
-        var typed = new Typed('#typed', {
+        new Typed('#typed', {
             strings: [
                 'Establishing Secure Connection...',
                 'Analyzing Attack Lifecycle...',
