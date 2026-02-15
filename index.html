@@ -141,20 +141,60 @@
             transform: translateX(5px);   /* Slight nudge to show interaction */
         }
 
-        .terminal-link {
-            color: #00ff41; 
-            text-decoration: none;
-            cursor: pointer;
-            display: inline-block;
-            transition: 0.3s;
+        /* Container for the timeline */
+        .timeline {
+            border-left: 2px solid var(--grab-red);
+            margin-left: 20px;
+            padding-left: 30px;
+            position: relative;
         }
-    
-        /* This makes it "Show" that it is a button on hover */
-        .terminal-link:hover {
-            color: #ff3131; /* Changes to red on hover */
-            text-shadow: 0 0 10px #ff3131;
-            transform: scale(1.05);
+        
+        /* The glowing dots for each entry */
+        .exp-item {
+            position: relative;
+            margin-bottom: 50px;
         }
+        
+        .exp-item::before {
+            content: "";
+            position: absolute;
+            left: -41px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-black);
+            border: 2px solid var(--neon-red);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-red);
+        }
+        
+        .exp-item h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        
+        .exp-item .date {
+            color: var(--neon-red);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .exp-item ul {
+            list-style: none;
+            padding: 0;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+        
+        .exp-item li::before {
+            content: "> ";
+            color: var(--terminal-green);
+        }
+        
     </style>
 </head>
 <body>
@@ -200,15 +240,31 @@
 
     <section id="experience">
         <h2>./Professional_Log</h2>
-        <div class="exp-item">
-            <h3>DIS Sentinel Programme</h3>
-            <span>Cyber Defense Training // 2024</span>
-            <p style="color: var(--text-gray);">Focused on Incident Response and Threat Triage. Awarded 3rd Place in Red Team Hackathon.</p>
-        </div>
-        <div class="exp-item">
-            <h3>Kimberly Clark Asia Pacific</h3>
-            <span>Quality Technician // 2020 - 2022</span>
-            <p style="color: var(--text-gray);">Maintained 100% sample traceability and strict SOP compliance in a high-stakes industrial environment.</p>
+        
+        <div class="timeline">
+            
+            <div class="exp-item">
+                <span class="date">[ 2024 - PRESENT ]</span>
+                <h3>DIS Sentinel Programme</h3>
+                <p style="color: var(--neon-red); font-weight: bold;">Cyber Defense & Incident Response</p>
+                <ul>
+                    <li>Secured 3rd place in the Red Team Hackathon among 50+ participants.</li>
+                    <li>Conducted deep-dive analysis into the Cyber Attack Lifecycle (MITRE ATT&CK).</li>
+                    <li>Developed strategies for threat triage and vulnerability mitigation.</li>
+                </ul>
+            </div>
+    
+            <div class="exp-item">
+                <span class="date">[ 2020 - 2022 ]</span>
+                <h3>Kimberly Clark Asia Pacific</h3>
+                <h3>Quality Technician</h3>
+                <ul>
+                    <li>Ensured 100% compliance with ISO standards and industrial SOPs.</li>
+                    <li>Managed critical sample traceability, maintaining a zero-error audit log.</li>
+                    <li>Applied analytical troubleshooting to resolve production-line anomalies.</li>
+                </ul>
+            </div>
+    
         </div>
     </section>
 
@@ -219,7 +275,7 @@
                 
                 <p>Command: 
                     <a href="#home" class="terminal-link">
-                        finger nakaoka_yumi
+                        nakaoka_yumi
                     </a>
                 </p>
     
