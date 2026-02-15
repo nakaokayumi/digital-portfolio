@@ -184,18 +184,28 @@
     
         /* Modals */
         .modal {
-            display: none;
+            display: none; 
             position: fixed;
-            z-index: 10000;
+            z-index: 20000;
             left: 0; top: 0;
             width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.95);
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
         }
     
         .modal-content {
-            margin: 5% auto;
             width: 90%;
-            max-width: 850px;
+            max-width: 500px;
+            background: #000;
+            border: 1px solid var(--neon-red);
+            box-shadow: 0 0 30px rgba(255, 49, 49, 0.2);
+        }
+        
+        .skill-category:hover {
+            cursor: pointer;
+            border-color: var(--neon-red);
+            transform: translateY(-2px);
         }
     
         .close-btn {
@@ -205,35 +215,21 @@
             font-weight: bold;
             cursor: pointer;
         }
+
+        #modal-body-text {
+            white-space: pre-wrap;
+            border-right: 2px solid #00ff41; /* The "typing" cursor */
+            animation: blink-cursor 0.75s step-end infinite;
+        }
+        
+        @keyframes blink-cursor {
+            from, to { border-color: transparent }
+            50% { border-color: #00ff41; }
+        }
     
         /* Utilities */
         .tag { background: #1a1a1a; color: var(--terminal-green); padding: 5px 10px; font-size: 0.75rem; margin: 4px; display: inline-block; border: 1px solid #333; }
         ul.bullet-list li::before { content: "> "; color: var(--terminal-green); margin-right: 8px; }
-
-        /* 1. Remove the default browser bullets */
-        ul.bullet-list {
-            list-style: none; 
-            padding-left: 0;
-            margin-top: 10px;
-        }
-        
-        /* 2. Style each list item */
-        ul.bullet-list li {
-            color: var(--text-gray);
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            display: flex; /* Keeps the arrow and text aligned perfectly */
-            align-items: flex-start;
-        }
-        
-        /* 3. Add the Green Arrow back */
-        ul.bullet-list li::before {
-            content: ">";
-            color: #00ff41; /* Your terminal green */
-            font-weight: bold;
-            margin-right: 12px;
-            font-family: 'Courier New', monospace;
-        }
     
     </style>
 </head>
@@ -300,50 +296,52 @@
         </div>
     </section>
 
- <section id="experience">
-    <h2>./Professional_Log</h2>
-    <div class="timeline">
-        <div class="exp-item">
-            <span class="date">[ 2024 - PRESENT ]</span>
-            <h3>DIS Sentinel Programme</h3>
-            <p style="color: var(--neon-red); font-weight: bold;">Cyber Defense & Incident Response</p>
-            <ul class="bullet-list"> <li>Secured 3rd place in the Red Team Hackathon.</li>
-                <li>MITRE ATT&CK Framework deep-dive analysis.</li>
-            </ul>
+    <section id="experience">
+        <h2>./Professional_Log</h2>
+        <div class="timeline">
+            <div class="exp-item">
+                <span class="date">[ 2024 - PRESENT ]</span>
+                <h3>DIS Sentinel Programme</h3>
+                <p style="color: var(--neon-red); font-weight: bold;">Cyber Defense & Incident Response</p>
+                <ul class="bullet-list">
+                    <li>Secured 3rd place in the Red Team Hackathon.</li>
+                    <li>MITRE ATT&CK Framework deep-dive analysis.</li>
+                </ul>
+            </div>
+            <div class="exp-item">
+                <span class="date">[ 2020 - 2022 ]</span>
+                <h3>Kimberly Clark Asia Pacific</h3>
+                <h3>Quality Technician</h3>
+                <ul class="bullet-list">
+                    <li>100% compliance with ISO standards.</li>
+                    <li>Zero-error audit log management.</li>
+                </ul>
+            </div>
         </div>
-        <div class="exp-item">
-            <span class="date">[ 2020 - 2022 ]</span>
-            <h3>Kimberly Clark Asia Pacific</h3>
-            <h3>Quality Technician</h3>
-            <ul class="bullet-list">
-                <li>100% compliance with ISO standards.</li>
-                <li>Zero-error audit log management.</li>
-            </ul>
-        </div>
-    </div>
-</section>
+    </section>
 
     <section id="skills">
         <h2>./TECHNICAL_ARSENAL</h2>
         <div class="skills-grid">
             
-            <div class="skill-category">
+            <div class="skill-category" onclick="openModal('Security_Ops', 'Analyzing attack lifecycles and mapping threats to the MITRE ATT&CK framework. Specialized in real-time incident response and threat triage.')">
                 <h4 style="color: var(--neon-red); margin-top: 0;"><i class="fas fa-shield-alt"></i> Security Ops</h4>
                 <div class="skill-tags">
                     <span class="tag">Incident Response</span>
                     <span class="tag">Threat Triage</span>
                 </div>
             </div>
-    
-            <div class="skill-category">
+            
+            <div class="skill-category" onclick="openModal('Dev_and_IAM', 'Building secure authentication flows using OAuth 2.0 and OpenID Connect. Developing automation scripts in Python and Go for identity lifecycle management.')">
                 <h4 style="color: var(--neon-red); margin-top: 0;"><i class="fas fa-code"></i> Dev & IAM</h4>
                 <div class="skill-tags">
                     <span class="tag">Python</span>
+                    <span class="tag">Go</span>
                     <span class="tag">OAuth 2.0</span>
                 </div>
             </div>
-    
-            <div class="skill-category">
+            
+            <div class="skill-category" onclick="openModal('Compliance_Audit', 'Ensuring infrastructure adheres to PDPA (Singapore) and ISO 27001 standards. Managing zero-error audit logs and performing risk assessments.')">
                 <h4 style="color: var(--neon-red); margin-top: 0;"><i class="fas fa-file-contract"></i> Compliance</h4>
                 <div class="skill-tags">
                     <span class="tag">PDPA</span>
@@ -504,5 +502,38 @@ if __name__ == "__main__":
             typeSpeed: 50, backSpeed: 30, loop: true
         });
     </script>
+        <div id="skillModal" class="modal">
+        <div class="terminal-window modal-content">
+            <div class="terminal-header">
+                <div class="dot red" onclick="closeModal()"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+                <span id="modal-title" style="margin-left: 10px; color: #666; font-size: 0.8rem;"></span>
+            </div>
+            <div class="terminal-body">
+                <div id="modal-body-text" style="color: #00ff41; font-family: monospace;"></div>
+                <br>
+                <button class="terminal-btn" onclick="closeModal()" style="padding: 5px 10px; font-size: 0.7rem;">CLOSE_SESSION</button>
+            </div>
+        </div>
+    </div>
+    function openModal(title, text) {
+        document.getElementById('modal-title').innerText = title + ".exe";
+        document.getElementById('modal-body-text').innerText = "> " + text;
+        document.getElementById('skillModal').style.display = "flex";
+    }
+    
+    function closeModal() {
+        document.getElementById('skillModal').style.display = "none";
+    }
+    
+    // Close if user clicks outside the box
+    window.onclick = function(event) {
+        let modal = document.getElementById('skillModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 </body>
 </html>
+
