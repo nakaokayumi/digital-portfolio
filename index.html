@@ -43,24 +43,23 @@
     
         nav .logo { color: var(--neon-red); font-weight: 900; letter-spacing: 2px; }
         
-        nav .nav-links { display: flex; list-style: none; padding: 0; margin: 0; }
-        
-        nav .nav-links a { 
-            color: white; 
-            text-decoration: none; 
-            margin-left: 15px; 
-            font-size: 0.75rem; 
-            letter-spacing: 1px;
-            padding: 6px 12px;
-            border: 1px solid transparent;
-            transition: 0.3s;
+        .nav-links {
+            display: flex; /* This makes the links sit horizontally */
+            gap: 20px;     /* Adds space between the words */
         }
-    
-        nav .nav-links a:hover { 
-            color: var(--terminal-green); /* Matches your "Side Missions" request */
-            border: 1px solid var(--neon-red);
-            box-shadow: 0 0 10px var(--neon-red);
-            text-shadow: 0 0 10px var(--terminal-green);
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-family: 'Consolas', monospace;
+            transition: 0.3s;
+            padding: 5px 10px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--neon-red);
+            text-shadow: 0 0 8px var(--neon-red);
         }
     
         /* Hero Section */
