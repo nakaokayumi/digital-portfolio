@@ -127,6 +127,19 @@
             text-shadow: 0 0 10px var(--neon-red);
             text-decoration: underline;
         }
+
+        .terminal-btn {
+            text-decoration: none; /* Removes the underline */
+            color: #00ff41;        /* Keeps it terminal green */
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .terminal-btn:hover {
+            cursor: pointer;       /* Changes arrow to a hand icon */
+            text-shadow: 0 0 8px #00ff41; /* Makes it glow green */
+            transform: translateX(5px);   /* Slight nudge to show interaction */
+        }
     </style>
 </head>
 <body>
@@ -189,9 +202,11 @@
         <div class="terminal-window" style="max-width: 500px;">
             <div class="terminal-body">
                 <p>Command: 
-                    <a href="#home" style="text-decoration: none; color: inherit;">
-                        <span style="color: #00ff41; cursor: pointer;">finger nakaoka_yumi</span>
-                    </a>
+                    <p>Command: 
+                        <a href="#home" class="terminal-btn">
+                            <span>finger nakaoka_yumi</span>
+                        </a>
+                    </p>
                 </p>
                 <p>Email: <a href="mailto:nakaoka.yumi.sg@gmail.com" style="color: var(--neon-red); text-decoration:none;">nakaoka.yumi.sg@gmail.com</a></p>
                 <p>Phone: +65 8750 9811</p>
