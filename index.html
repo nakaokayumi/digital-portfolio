@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nakaoka Yumi | Cybersecurity Analyst</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --bg-black: #050505;
@@ -39,17 +40,17 @@
         }
 
         nav .logo { color: var(--neon-red); font-weight: 900; letter-spacing: 2px; }
-        nav a { 
+        nav .nav-links a { 
             color: white; 
             text-decoration: none; 
-            margin-left: 25px; 
-            font-size: 0.8rem; 
+            margin-left: 15px; 
+            font-size: 0.75rem; 
             letter-spacing: 1px;
-            padding: 8px 16px;
+            padding: 6px 12px;
             border: 1px solid transparent;
             transition: 0.3s;
         }
-        nav a:hover { 
+        nav .nav-links a:hover { 
             color: var(--neon-red); 
             border: 1px solid var(--neon-red);
             box-shadow: 0 0 10px var(--neon-red);
@@ -71,19 +72,47 @@
 
         /* Sections */
         section { padding: 100px 10%; min-height: 80vh; }
-        h2 { color: var(--neon-red); text-transform: uppercase; font-size: 1.8rem; margin-bottom: 40px; border-bottom: 1px solid #222; display: inline-block; }
+        h2 { color: var(--neon-red); text-transform: uppercase; font-size: 1.5rem; margin-bottom: 40px; border-bottom: 1px solid #222; display: inline-block; letter-spacing: 2px; }
 
-        /* Terminal Window */
+        /* Terminal Style */
         .terminal-window {
             background: #000;
             border: 1px solid #333;
             border-radius: 6px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
         }
-        .terminal-header { background: #1a1a1a; padding: 10px; display: flex; gap: 8px; border-radius: 6px 6px 0 0; }
+        .terminal-header { background: #1a1a1a; padding: 10px; display: flex; gap: 8px; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
         .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
-        .terminal-body { padding: 20px; font-family: 'Consolas', monospace; color: var(--terminal-green); }
+        .terminal-body { padding: 25px; font-family: 'Consolas', monospace; color: var(--terminal-green); line-height: 1.6; }
+
+        /* Explicit Button Styling */
+        .terminal-btn {
+            border: 1px solid var(--neon-red);
+            padding: 8px 16px;
+            border-radius: 4px;
+            background: rgba(255, 49, 49, 0.05);
+            text-decoration: none;
+            color: var(--neon-red) !important;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        
+        .terminal-btn:hover {
+            background: var(--neon-red);
+            color: white !important;
+            box-shadow: 0 0 20px var(--neon-red);
+            transform: translateY(-3px);
+        }
+
+        .terminal-btn:active { transform: scale(0.95); }
 
         /* Timeline */
         .timeline { border-left: 2px solid var(--grab-red); margin-left: 20px; padding-left: 30px; }
@@ -93,27 +122,24 @@
             background: var(--bg-black); border: 2px solid var(--neon-red); border-radius: 50%;
             box-shadow: 0 0 10px var(--neon-red);
         }
-        .exp-item h3 { color: white; margin: 0; }
-        .exp-item .date { color: var(--neon-red); font-size: 0.9rem; margin-bottom: 10px; display: block; }
+        .exp-item h3 { color: white; margin: 0; font-size: 1.3rem; }
+        .exp-item .date { color: var(--neon-red); font-size: 0.85rem; margin-bottom: 10px; display: block; font-weight: bold; }
 
-        /* Skills */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .skill-category { background: #0a0a0a; border: 1px solid #222; padding: 20px; transition: 0.3s; }
-        .skill-category:hover { border-color: var(--neon-red); }
-        .tag { background: #1a1a1a; color: var(--terminal-green); padding: 4px 10px; font-size: 0.8rem; margin: 4px; display: inline-block; }
+        /* Skills Matrix */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .skill-category { background: #0a0a0a; border: 1px solid #222; padding: 20px; border-radius: 4px; transition: 0.3s; }
+        .skill-category:hover { border-color: var(--neon-red); background: #111; }
+        .tag { background: #1a1a1a; color: var(--terminal-green); padding: 5px 10px; font-size: 0.75rem; margin: 4px; display: inline-block; border-radius: 2px; border: 1px solid #333; }
 
-        .btn {
-            background: transparent; color: var(--neon-red); border: 1px solid var(--neon-red);
-            padding: 12px 30px; text-decoration: none; transition: 0.3s; display: inline-block; margin-top: 20px;
-        }
-        .btn:hover { background: var(--neon-red); color: white; box-shadow: 0 0 15px var(--neon-red); }
+        ul { list-style: none; padding: 0; color: var(--text-gray); }
+        li::before { content: "> "; color: var(--terminal-green); margin-right: 8px; }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">YUMI // SEC</div>
-        <div>
+        <div class="nav-links">
             <a href="#projects">PROJECTS</a>
             <a href="#experience">EXPERIENCE</a>
             <a href="#skills">SKILLS</a>
@@ -124,8 +150,10 @@
     <header id="home">
         <div class="typing-container"><span id="typed"></span></div>
         <h1>NAKAOKA <span>YUMI</span></h1>
-        <p style="max-width: 600px; color: var(--text-gray);">Cybersecurity & Digital Forensics student specializing in <strong>Identity Access Management</strong> and <strong>Incident Response</strong>. Audit-ready mindset with industrial QA experience.</p>
-        <a href="#projects" class="btn">INITIALIZE SEARCH</a>
+        <p style="max-width: 600px; color: var(--text-gray); line-height: 1.6;">Cybersecurity & Digital Forensics student specializing in <strong>Identity Access Management</strong> and <strong>Incident Response</strong>. Audit-ready mindset with industrial QA experience.</p>
+        <a href="#projects" class="terminal-btn">
+            <i class="fas fa-search"></i> INITIALIZE SEARCH
+        </a>
     </header>
 
     <section id="projects">
@@ -140,8 +168,10 @@
                 <p>> [SEC] PBKDF2 Hashing: <span style="color:white">ENABLED</span></p>
                 <p>> [SEC] SQLi Prevention: <span style="color:white">ACTIVE</span></p>
                 <p>> [COMPLIANCE] PDPA Audit Logging: <span style="color:white">VERIFIED</span></p>
-                <p style="color: var(--text-gray); margin-top: 20px;">Built with Python/Flask to demonstrate OWASP mitigation and session integrity.</p>
-                <a href="https://github.com/nakaokayumi/secure-identity-portal" style="color: var(--neon-red); text-decoration: none;">[VIEW REPOSITORY]</a>
+                <p style="color: var(--text-gray); margin-top: 15px;">Demonstrating OWASP mitigation and session integrity for enterprise platforms.</p>
+                <a href="https://github.com/nakaokayumi/secure-identity-portal" class="terminal-btn">
+                    <i class="fab fa-github"></i> VIEW REPOSITORY
+                </a>
             </div>
         </div>
     </section>
@@ -152,7 +182,7 @@
             <div class="exp-item">
                 <span class="date">[ 2024 - PRESENT ]</span>
                 <h3>DIS Sentinel Programme</h3>
-                <p style="color: var(--neon-red); font-weight: bold;">Cyber Defense & Incident Response</p>
+                <p style="color: var(--neon-red); font-weight: bold; margin-top: 5px;">Cyber Defense & Incident Response</p>
                 <ul>
                     <li>Secured 3rd place in the Red Team Hackathon.</li>
                     <li>MITRE ATT&CK Framework deep-dive analysis.</li>
@@ -174,29 +204,35 @@
         <h2>./Technical_Arsenal</h2>
         <div class="skills-grid">
             <div class="skill-category">
-                <h4 style="color: var(--neon-red);">Security Ops</h4>
-                <div class="tag">Incident Response</div><div class="tag">Wireshark</div>
+                <h4 style="color: var(--neon-red); margin-top: 0;"><i class="fas fa-shield-alt"></i> Security Ops</h4>
+                <div class="tag">Incident Response</div><div class="tag">Wireshark</div><div class="tag">Threat Hunting</div>
             </div>
             <div class="skill-category">
-                <h4 style="color: var(--neon-red);">Dev & IAM</h4>
-                <div class="tag">Python</div><div class="tag">OAuth 2.0</div>
+                <h4 style="color: var(--neon-red); margin-top: 0;"><i class="fas fa-code"></i> Dev & IAM</h4>
+                <div class="tag">Python</div><div class="tag">OAuth 2.0</div><div class="tag">Flask</div>
             </div>
             <div class="skill-category">
-                <h4 style="color: var(--neon-red);">Compliance</h4>
-                <div class="tag">PDPA</div><div class="tag">ISO Audit</div>
+                <h4 style="color: var(--neon-red); margin-top: 0;"><i class="fas fa-file-contract"></i> Compliance</h4>
+                <div class="tag">PDPA</div><div class="tag">ISO Audit</div><div class="tag">SIEM</div>
             </div>
         </div>
     </section>
 
     <section id="contact">
         <h2>./Connect</h2>
-        <div class="terminal-window" style="padding: 20px;">
+        <div class="terminal-window">
             <div class="terminal-body">
-                <p><span style="color: #00ff41;">Email: </span><a href="mailto:nakaoka.yumi.sg@gmail.com" style="color: #ff3131; text-decoration: none;">nakaoka.yumi.sg@gmail.com</a></p>
-                <p><span style="color: #00ff41;">Phone: </span>+65 8750 9811</p>
-                <p><span style="color: #00ff41;">Location: </span>Singapore</p>
+                <p>
+                    <i class="fas fa-envelope" style="color: var(--neon-red); width: 20px;"></i>
+                    <span style="color: #00ff41;">Email: </span>
+                    <a href="mailto:nakaoka.yumi.sg@gmail.com" style="color: #ff3131; text-decoration: none; border-bottom: 1px dashed transparent;" onmouseover="this.style.borderBottom='1px dashed #ff3131'" onmouseout="this.style.borderBottom='1px dashed transparent'">
+                        nakaoka.yumi.sg@gmail.com
+                    </a>
+                </p>
+                <p><i class="fas fa-phone" style="color: var(--neon-red); width: 20px;"></i> <span style="color: #00ff41;">Phone: </span>+65 8750 9811</p>
+                <p><i class="fas fa-network-wired" style="color: var(--neon-red); width: 20px;"></i> <span style="color: #00ff41;">Location: </span>Singapore</p>
                 <br>
-                <p style="color: #00ff41;">> [MESSAGE] Ready for deployment at Grab.</p>
+                <p style="color: #00ff41;"><i class="fas fa-terminal"></i> > [MESSAGE] Ready for deployment at Grab.</p>
             </div>
         </div>
     </section>
