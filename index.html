@@ -196,8 +196,8 @@
     
         .modal-content {
             width: 90%;
-            max-width: 500px;
-            background: #000;
+            max-width: 600px;
+            background: transparent;
             border: 1px solid var(--neon-red);
             box-shadow: 0 0 30px rgba(255, 49, 49, 0.2);
         }
@@ -297,13 +297,13 @@
             <div class="artifact-card">
                 <h4 style="color: var(--terminal-green);">[ PROJECT: HANGMAN_V2 ]</h4>
                 <p>Python logic engine with ASCII state rendering for educational security simulations.</p>
-                <button onclick="document.getElementById('hangmanModal').style.display='block'" class="terminal-btn">VIEW SOURCE</button>
+                <button onclick="let m = document.getElementById('hangmanModal'); m.style.display='flex'" class="terminal-btn">VIEW SOURCE</button>
             </div>
 
             <div class="artifact-card">
                 <h4 style="color: var(--terminal-green);">[ EVIDENCE: LOG_CAPTURE ]</h4>
                 <p>Wireshark packet analysis and threat triage from the DIS Sentinel Hackathon.</p>
-                <button onclick="document.getElementById('logModal').style.display='block'" class="terminal-btn">VIEW LOGS</button>
+                <button onclick="let m = document.getElementById('logModal'); m.style.display='flex'" class="terminal-btn">VIEW LOGS</button>
             </div>
         </div>
     </section>
