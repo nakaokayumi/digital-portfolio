@@ -342,20 +342,79 @@
                 </div>
                 <div class="terminal-body"> <pre>
 import random
-animals = ("baboon", "flamingo", "terrapin", "lioness", "capybara")
+animals = ("baboon", "flamingo", "terrapin", "lioness", "capybara", "beaver", "iguana", "jaguar", "antelope", "chimpanzee", "pangolin", "platypus", "kangaroo", "schnauzer", "salmon", "ostrich", "cougar", "buffalo", "grouper", "reindeer", "chihuahua", "chameleon", "orangutan", "chinchilla")
 
-drawing = {
-    0: ("   ", "   ", "   "),
-    1: (" 😟 ", "   ", "   "),
-    6: (" 😟 ", "/|\\", "/ \\")
-}
+drawing = {0: ("   ",
+                   "   ",
+                   "   "),
+               1: (" 😒 ",
+                   "   ",
+                   "   "),
+               2: (" 😒 ",
+                   "  | ",
+                   "   "),
+               3: (" 😒 ",
+                   "🫲| ",
+                   "   "),
+               4: (" 😒 ",
+                   "🫲|🤌",
+                   "   "),
+               5: (" 😒 ",
+                   "🫲|🤌",
+                   "🦶  "),
+               6: (" 😒 ",
+                   "🫲|🤌",
+                   "🦶 🦵")}
+
+def display_man(wrong_guesses):
+    for line in drawing[wrong_guesses]:
+        print(line)
+
+def display_hint(hint):
+    print(" ".join(hint))
+
+def display_answer(answer):
+    print(" ".join(answer))
 
 def main():
     answer = random.choice(animals)
     hint = ["_"] * len(answer)
     wrong_guesses = 0
+    guessed_letters = set()
     is_running = True
-    # Full logic here...
+
+    while is_running:
+        display_man(wrong_guesses)
+        display_hint(hint)
+        guess = input(f"enter a letter ({len(answer)}) letters: ").lower()
+
+        if guess in answer:
+            for index in range(len(answer)):
+                if answer[index] == guess:
+                    hint[index] = guess
+        else:
+            wrong_guesses += 1
+
+        if "_" not in hint:
+            display_man(wrong_guesses)
+            display_answer(answer)
+            print()
+            print("**********")
+            print("YOU WIN !!")
+            print("**********")
+            is_running = False
+        elif wrong_guesses >= len(drawing) - 1:
+            display_man(wrong_guesses)
+            display_answer(answer)
+            print()
+            print("***********")
+            print("YOU LOSE !!")
+            print("***********")
+            is_running = False
+
+if __name__ == "__main__":
+    main()
+
 </pre>
                 </div>
             </div>
