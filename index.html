@@ -181,6 +181,29 @@
             font-weight: bold;
             cursor: pointer;
         }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            align-items: stretch; /* Makes all cards in a row the same height */
+        }
+        
+        .artifact-card {
+            background: #0d0d0d;
+            border: 1px solid #1a1a1a;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Keeps buttons at the bottom */
+            border-radius: 8px;
+            transition: 0.3s ease;
+        }
+        
+        .artifact-card:hover {
+            border-color: var(--neon-red);
+            background: #111;
+        }
     </style>
 </head>
 <body>
@@ -230,24 +253,24 @@
         </div>
     </section>
 
-    <section id="other-projects">
+    <section id="side-missions">
         <h2>./Side_Missions</h2>
         <div class="skills-grid">
             
             <div class="artifact-card">
                 <h4 style="color: var(--terminal-green); margin-top: 0;">[ PROJECT: HANGMAN_V2 ]</h4>
-                <p style="font-size: 0.85rem; color: var(--text-gray);">
-                    Logic-based Python engine featuring dynamic ASCII state rendering.
+                <p style="font-size: 0.85rem; color: var(--text-gray); line-height: 1.5;">
+                    Logic-based Python engine featuring dynamic ASCII state rendering using emoji artifacts.
                 </p>
-                <div style="background: #000; padding: 10px; border: 1px solid #222; margin-bottom: 15px;">
-                    <code style="color: #ce9178; font-size: 0.8rem;">Drawing[6]: (" 😟 ", "💪|🤳", "🦵 🦶")</code>
+                <div style="background: #000; padding: 12px; border: 1px solid #222; margin-bottom: 20px; border-radius: 4px;">
+                    <code style="color: #ce9178; font-size: 0.8rem; font-family: monospace;">Drawing[6]: (" 😟 ", "💪|🤳", "🦵 🦶")</code>
                 </div>
                 
                 <div style="display: flex; gap: 10px;">
-                    <button onclick="document.getElementById('hangmanModal').style.display='block'" class="terminal-btn" style="font-size: 0.7rem;">
+                    <button onclick="document.getElementById('hangmanModal').style.display='block'" class="terminal-btn" style="font-size: 0.75rem;">
                         <i class="fas fa-code"></i> VIEW SOURCE
                     </button>
-                    <a href="https://github.com/nakaokayumi" target="_blank" class="terminal-btn" style="font-size: 0.7rem;">
+                    <a href="https://github.com/nakaokayumi" target="_blank" class="terminal-btn" style="font-size: 0.75rem;">
                         <i class="fab fa-github"></i> REPO
                     </a>
                 </div>
@@ -255,11 +278,10 @@
     
             <div class="artifact-card">
                 <h4 style="color: var(--terminal-green); margin-top: 0;">[ EVIDENCE: LOG_CAPTURE ]</h4>
-                <p style="font-size: 0.85rem; color: var(--text-gray);">
-                    Wireshark packet analysis logs from the DIS Sentinel Hackathon.
+                <p style="font-size: 0.85rem; color: var(--text-gray); line-height: 1.5;">
+                    Wireshark packet analysis logs and network telemetry from the DIS Sentinel Hackathon.
                 </p>
-                <br>
-                <a href="#" class="terminal-btn" style="font-size: 0.7rem;">
+                <br><br> <a href="#" class="terminal-btn" style="font-size: 0.75rem;">
                     <i class="fas fa-file-medical-alt"></i> VIEW LOGS
                 </a>
             </div>
@@ -271,30 +293,30 @@
             <div class="terminal-window">
                 <div class="terminal-header">
                     <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                    <span style="color: #666; font-size: 0.8rem; margin-left: 10px;">hangman.py</span>
+                    <span style="color: #666; font-size: 0.8rem; margin-left: 10px;">hangman_core.py</span>
                     <span class="close-btn" onclick="document.getElementById('hangmanModal').style.display='none'">&times;</span>
                 </div>
-                <div class="terminal-body" style="max-height: 500px; overflow-y: auto;">
-    <pre style="color: #d1d1d1; margin: 0; font-size: 0.85rem;">
+                <div class="terminal-body" style="max-height: 500px; overflow-y: auto; background: #050505;">
+    <pre style="color: #d1d1d1; margin: 0; font-size: 0.85rem; font-family: 'Consolas', monospace;">
     <span style="color: #569cd6;">import</span> random
     
-    <span style="color: #6a9955;"># Animal database for word selection</span>
-    animals = (<span style="color: #ce9178;">"baboon"</span>, <span style="color: #ce9178;">"flamingo"</span>, <span style="color: #ce9178;">"lioness"</span>, <span style="color: #ce9178;">"capybara"</span>)
-    
-    drawing = {
-        <span style="color: #b5cea8;">0</span>: (<span style="color: #ce9178;">"   "</span>, <span style="color: #ce9178;">"   "</span>, <span style="color: #ce9178;">"   "</span>),
-        <span style="color: #b5cea8;">6</span>: (<span style="color: #ce9178;">" 😟 "</span>, <span style="color: #ce9178;">"💪|🤳"</span>, <span style="color: #ce9178;">"🦵 🦶"</span>)
-    }
+    <span style="color: #6a9955;"># Database from image_b7b103.png</span>
+    animals = (<span style="color: #ce9178;">"baboon"</span>, <span style="color: #ce9178;">"flamingo"</span>, <span style="color: #ce9178;">"terrapin"</span>, <span style="color: #ce9178;">"lioness"</span>)
     
     <span style="color: #569cd6;">def</span> <span style="color: #dcdcaa;">main</span>():
         answer = random.choice(animals)
-        <span style="color: #6a9955;"># Logic continues...</span>
+        hint = [<span style="color: #ce9178;">"_"</span>] * <span style="color: #b5cea8;">len</span>(answer)
+        wrong_guesses = <span style="color: #b5cea8;">0</span>
+        is_running = <span style="color: #569cd6;">True</span>
+    
+        <span style="color: #569cd6;">while</span> is_running:
+            <span style="color: #6a9955;"># Game logic and emoji rendering here...</span>
+            guess = <span style="color: #b5cea8;">input</span>(<span style="color: #ce9178;">"Enter a letter: "</span>).lower()
     </pre>
                 </div>
             </div>
         </div>
     </div>
-    </section>
 
     <section id="experience">
         <h2>./Professional_Log</h2>
