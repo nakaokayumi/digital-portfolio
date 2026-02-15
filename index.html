@@ -302,6 +302,21 @@
         width: 90%;
         max-width: 800px;
     }
+        /* Fix for the scrollable terminal body */
+    .terminal-body {
+        height: 500px;           /* Set a fixed height */
+        overflow-y: auto;        /* Enable vertical scrolling */
+        overflow-x: hidden;      /* Prevent horizontal messiness */
+        display: block;          /* Ensure it behaves as a block element */
+    }
+    
+    /* Ensure the code stays inside the box */
+    .terminal-body pre {
+        white-space: pre-wrap;   /* Wraps long lines so they don't go off-screen */
+        word-wrap: break-word;   /* Breaks long strings */
+        margin: 0;               /* Removes extra spacing */
+        padding: 10px;           /* Adds breathing room for the text */
+    }
     </style>
 </head>
 <body>
@@ -537,29 +552,22 @@
                 <div class="terminal-body" style="height: 500px; overflow-y: scroll; background: #050505;">
         <pre style="color: #d1d1d1; margin: 0; font-size: 0.85rem; font-family: monospace; white-space: pre-wrap;">
        import random
-        animals = ("baboon", "flamingo", "terrapin", "lioness", "capybara", "beaver", "iguana", "jaguar", "antelope", "chimpanzee", "pangolin", "platypus", "kangaroo", "schnauzer", "salmon", "ostrich", "cougar", "buffalo", "grouper", "reindeer", "chihuahua", "chameleon", "orangutan", "chinchilla")
+
+        # Complete Database from image_b7b103.png
+        animals = ("baboon", "flamingo", "terrapin", "lioness", "capybara", "beaver", 
+                   "iguana", "jaguar", "antelope", "chimpanzee", "pangolin", "platypus", 
+                   "kangaroo", "schnauzer", "salmon", "ostrich", "cougar", "buffalo", 
+                   "grouper", "reindeer", "chihuahua", "chameleon", "orangutan", "chinchilla")
         
-        drawing = {0: ("   ",
-                           "   ",
-                           "   "),
-                       1: (" 😒 ",
-                           "   ",
-                           "   "),
-                       2: (" 😒 ",
-                           "  | ",
-                           "   "),
-                       3: (" 😒 ",
-                           "🫲| ",
-                           "   "),
-                       4: (" 😒 ",
-                           "🫲|🤌",
-                           "   "),
-                       5: (" 😒 ",
-                           "🫲|🤌",
-                           "🦶  "),
-                       6: (" 😒 ",
-                           "🫲|🤌",
-                           "🦶 🦵")}
+        drawing = {
+            0: ("   ", "   ", "   "),
+            1: (" 😟 ", "   ", "   "),
+            2: (" 😟 ", " | ", "   "),
+            3: (" 😟 ", "/| ", "   "),
+            4: (" 😟 ", "/|\\", "   "),
+            5: (" 😟 ", "/|\\", "/  "),
+            6: (" 😟 ", "/|\\", "/ \\")
+        }
         
         def display_man(wrong_guesses):
             for line in drawing[wrong_guesses]:
@@ -581,7 +589,7 @@
             while is_running:
                 display_man(wrong_guesses)
                 display_hint(hint)
-                guess = input(f"enter a letter ({len(answer)}) letters: ").lower()
+                guess = input(f"Enter a letter ({len(answer)} letters): ").lower()
         
                 if guess in answer:
                     for index in range(len(answer)):
@@ -593,18 +601,12 @@
                 if "_" not in hint:
                     display_man(wrong_guesses)
                     display_answer(answer)
-                    print()
-                    print("**********")
-                    print("YOU WIN !!")
-                    print("**********")
+                    print("\n**********\nYOU WIN !!\n**********")
                     is_running = False
                 elif wrong_guesses >= len(drawing) - 1:
                     display_man(wrong_guesses)
                     display_answer(answer)
-                    print()
-                    print("***********")
-                    print("YOU LOSE !!")
-                    print("***********")
+                    print("\n**********\nYOU LOSE !!\n**********")
                     is_running = False
         
         if __name__ == "__main__":
