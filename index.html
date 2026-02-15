@@ -209,6 +209,31 @@
         /* Utilities */
         .tag { background: #1a1a1a; color: var(--terminal-green); padding: 5px 10px; font-size: 0.75rem; margin: 4px; display: inline-block; border: 1px solid #333; }
         ul.bullet-list li::before { content: "> "; color: var(--terminal-green); margin-right: 8px; }
+
+        /* 1. Remove the default browser bullets */
+        ul.bullet-list {
+            list-style: none; 
+            padding-left: 0;
+            margin-top: 10px;
+        }
+        
+        /* 2. Style each list item */
+        ul.bullet-list li {
+            color: var(--text-gray);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            display: flex; /* Keeps the arrow and text aligned perfectly */
+            align-items: flex-start;
+        }
+        
+        /* 3. Add the Green Arrow back */
+        ul.bullet-list li::before {
+            content: ">";
+            color: #00ff41; /* Your terminal green */
+            font-weight: bold;
+            margin-right: 12px;
+            font-family: 'Courier New', monospace;
+        }
     
     </style>
 </head>
@@ -275,29 +300,28 @@
         </div>
     </section>
 
-    <section id="experience">
-        <h2>./Professional_Log</h2>
-        <div class="timeline">
-            <div class="exp-item">
-                <span class="date">[ 2024 - PRESENT ]</span>
-                <h3>DIS Sentinel Programme</h3>
-                <p style="color: var(--neon-red); font-weight: bold;">Cyber Defense & Incident Response</p>
-                <ul class="bullet-list">
-                    <li>Secured 3rd place in the Red Team Hackathon.</li>
-                    <li>MITRE ATT&CK Framework deep-dive analysis.</li>
-                </ul>
-            </div>
-            <div class="exp-item">
-                <span class="date">[ 2020 - 2022 ]</span>
-                <h3>Kimberly Clark Asia Pacific</h3>
-                <h3>Quality Technician</h3>
-                <ul class="bullet-list">
-                    <li>100% compliance with ISO standards.</li>
-                    <li>Zero-error audit log management.</li>
-                </ul>
-            </div>
+ <section id="experience">
+    <h2>./Professional_Log</h2>
+    <div class="timeline">
+        <div class="exp-item">
+            <span class="date">[ 2024 - PRESENT ]</span>
+            <h3>DIS Sentinel Programme</h3>
+            <p style="color: var(--neon-red); font-weight: bold;">Cyber Defense & Incident Response</p>
+            <ul class="bullet-list"> <li>Secured 3rd place in the Red Team Hackathon.</li>
+                <li>MITRE ATT&CK Framework deep-dive analysis.</li>
+            </ul>
         </div>
-    </section>
+        <div class="exp-item">
+            <span class="date">[ 2020 - 2022 ]</span>
+            <h3>Kimberly Clark Asia Pacific</h3>
+            <h3>Quality Technician</h3>
+            <ul class="bullet-list">
+                <li>100% compliance with ISO standards.</li>
+                <li>Zero-error audit log management.</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
     <section id="skills">
         <h2>./TECHNICAL_ARSENAL</h2>
