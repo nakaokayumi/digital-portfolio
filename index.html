@@ -13,6 +13,7 @@
             --text-gray: #a0a0a0;
             --neon-red: #ff3131;
             --terminal-green: #00ff41;
+            --red-glow: rgba(204, 0, 0, 0.5);
         }
     
         /* Base Reset */
@@ -35,7 +36,7 @@
             padding: 1.2rem 8%;
             background: rgba(0,0,0,0.95);
             position: fixed;
-            width: 100%; /* Changed from 84% to fix alignment */
+            width: 100%;
             top: 0;
             z-index: 9999;
             border-bottom: 1px solid #1a1a1a;
@@ -44,8 +45,8 @@
         nav .logo { color: var(--neon-red); font-weight: 900; letter-spacing: 2px; }
         
         .nav-links {
-            display: flex; /* This makes the links sit horizontally */
-            gap: 20px;     /* Adds space between the words */
+            display: flex;
+            gap: 20px;
         }
         
         .nav-links a {
@@ -114,7 +115,7 @@
             font-family: 'Consolas', 'Courier New', monospace; 
             color: var(--terminal-green); 
             line-height: 1.6;
-            height: 500px; /* Fixed height for scroll */
+            height: 500px; 
             overflow-y: auto;
             overflow-x: hidden;
             display: block;
@@ -137,7 +138,6 @@
             flex-direction: column;
             justify-content: space-between;
             transition: 0.3s ease;
-            cursor: pointer;
         }
     
         .artifact-card:hover, .skill-category:hover {
@@ -146,8 +146,6 @@
             transform: translateY(-5px);
             background: #111;
         }
-    
-        .artifact-card p { flex-grow: 1; margin-bottom: 20px; color: var(--text-gray); }
     
         /* Buttons */
         .terminal-btn {
@@ -171,6 +169,53 @@
             background: var(--neon-red);
             color: white !important;
             box-shadow: 0 0 20px var(--neon-red);
+        }
+
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            background: var(--grab-red);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: 'Consolas', monospace;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 0 15px var(--red-glow);
+            filter: brightness(1.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 15px;
+            background: transparent;
+            color: var(--grab-red);
+            border: 1px solid var(--grab-red);
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: 'Consolas', monospace;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(204, 0, 0, 0.1);
+            box-shadow: 0 0 10px var(--red-glow);
         }
     
         /* Timeline Styles */
@@ -201,12 +246,6 @@
             border: 1px solid var(--neon-red);
             box-shadow: 0 0 30px rgba(255, 49, 49, 0.2);
         }
-        
-        .skill-category:hover {
-            cursor: pointer;
-            border-color: var(--neon-red);
-            transform: translateY(-2px);
-        }
     
         .close-btn {
             color: var(--neon-red);
@@ -218,7 +257,7 @@
 
         #modal-body-text {
             white-space: pre-wrap;
-            border-right: 2px solid #00ff41; /* The "typing" cursor */
+            border-right: 2px solid #00ff41;
             animation: blink-cursor 0.75s step-end infinite;
         }
         
@@ -229,62 +268,9 @@
     
         /* Utilities */
         .tag { background: #1a1a1a; color: var(--terminal-green); padding: 5px 10px; font-size: 0.75rem; margin: 4px; display: inline-block; border: 1px solid #333; }
-        ul.bullet-list li::before { content: "> "; color: var(--terminal-green); margin-right: 8px; }
-
-        .bullet-list {
-            list-style-type: none; /* Removes the standard dots */
-            padding-left: 0;       /* Removes the default left indent */
-            margin-left: 0;
-        }
-        
-        .bullet-list li {
-            margin-bottom: 10px;   /* Adds a little breathing room between points */
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .btn-primary {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: var(--red);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-family: 'JetBrains Mono', monospace;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .btn-primary:hover {
-            box-shadow: 0 0 15px var(--red-glow);
-            filter: brightness(1.2);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            display: inline-block;
-            padding: 12px 20px;
-            background: transparent;
-            color: var(--red);
-            border: 1px solid var(--red);
-            border-radius: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-family: 'JetBrains Mono', monospace;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 14px;
-            white-space: nowrap;
-        }
-        
-        .btn-secondary:hover {
-            background: rgba(255, 0, 0, 0.1);
-            box-shadow: 0 0 10px var(--red-glow);
-        }
+        .bullet-list { list-style-type: none; padding-left: 0; margin-left: 0; }
+        .bullet-list li { margin-bottom: 10px; display: flex; align-items: flex-start; }
+        .bullet-list li::before { content: "> "; color: var(--terminal-green); margin-right: 8px; }
 
     </style>
 </head>
@@ -316,7 +302,8 @@
             <div class="terminal-header">
                 <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
             </div>
-            <div class="terminal-body" style="height: auto;"> <p><span style="color:white">yumi@sec:~$</span> run analyze_project "Secure IAM Portal"</p>
+            <div class="terminal-body" style="height: auto;"> 
+                <p><span style="color:white">yumi@sec:~$</span> run analyze_project "Secure IAM Portal"</p>
                 <p>> [STATUS] Analyzing Architecture...</p>
                 <p>> [SEC] PBKDF2 Hashing: <span style="color:white">ENABLED</span></p>
                 <p>> [SEC] SQLi Prevention: <span style="color:white">ACTIVE</span></p>
@@ -337,15 +324,15 @@
     <section id="side-missions">
         <h2>./Side_Missions</h2>
         <div class="skills-grid">
+            
             <div class="artifact-card">
                 <h4 style="color: var(--terminal-green);">[ PROJECT: HANGMAN_V2 ]</h4>
                 <p>Python logic engine with ASCII state rendering for educational security simulations.</p>
-                <div class="card-footer" style="display: flex; gap: 10px; margin-top: 20px;">
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
                     <a href="https://github.com/nakaokayumi/digital-portfolio" target="_blank" class="btn-secondary">
                         VIEW SOURCE
                     </a>
-                
-                    <a href="game.html" class="btn-primary" style="text-decoration: none; text-align: center; flex-grow: 1;">
+                    <a href="game.html" class="btn-primary" style="text-decoration: none; flex-grow: 1;">
                         LAUNCH MISSION
                     </a>
                 </div>
@@ -356,17 +343,7 @@
                 <p>Wireshark packet analysis and threat triage from the DIS Sentinel Hackathon.</p>
                 <button onclick="let m = document.getElementById('logModal'); m.style.display='flex'" class="terminal-btn">VIEW LOGS</button>
             </div>
-            <div class="card project-card">
-                <div class="card-header">
-                    <span class="pill">MINIGAME</span>
-                    <h3>HANGMAN_PROTOCOL</h3>
-                </div>
-                <p class="sub">A Python-to-JavaScript port of a classic terminal-based decryption game.</p>
-                
-                <div class="card-footer">
-                    <a href="game.html" class="btn-primary" style="text-decoration: none; text-align: center;">LAUNCH MISSION</a>
-                </div>
-            </div>
+
         </div>
     </section>
 
@@ -397,7 +374,6 @@
     <section id="skills">
         <h2>./TECHNICAL_ARSENAL</h2>
         <div class="skills-grid">
-            
             <div class="skill-category" onclick="openModal('Security_Ops', 'Analyzing attack lifecycles and mapping threats to the MITRE ATT&CK framework. Specialized in real-time incident response and threat triage.')">
                 <h4 style="color: var(--neon-red); margin-top: 0;"><i class="fas fa-shield-alt"></i> Security Ops</h4>
                 <div class="skill-tags">
@@ -422,133 +398,34 @@
                     <span class="tag">ISO Audit</span>
                 </div>
             </div>
-    
         </div>
     </section>
+
     <section id="contact">
         <h2 style="color: var(--neon-red);">./CONNECT</h2>
-        
         <div class="terminal-window">
             <div class="terminal-body" style="height: auto; padding: 30px;">
-                <p style="color: #00ff41; font-family: 'Consolas', monospace; margin-bottom: 20px;">
-                    Command: nakaoka_yumi
-                </p>
-    
+                <p style="color: #00ff41; font-family: 'Consolas', monospace; margin-bottom: 20px;">Command: nakaoka_yumi</p>
                 <p style="margin-bottom: 15px;">
                     <span style="color: #00ff41; display: block;">Email:</span>
-                    <a href="mailto:nakaoka.yumi.sg@gmail.com" style="color: #ff3131; text-decoration: none; word-break: break-all;">
-                        nakaoka.yumi.sg@gmail.com
-                    </a>
+                    <a href="mailto:nakaoka.yumi.sg@gmail.com" style="color: #ff3131; text-decoration: none; word-break: break-all;">nakaoka.yumi.sg@gmail.com</a>
                 </p>
-    
                 <p style="margin-bottom: 15px;">
                     <span style="color: #00ff41; display: block;">Phone:</span>
                     <span style="color: #00ff41;">+65 8750 9811</span>
                 </p>
-    
                 <p style="margin-bottom: 30px;">
                     <span style="color: #00ff41; display: block;">Location:</span>
                     <span style="color: #00ff41;">Singapore</span>
                 </p>
-    
-                <div style="border-top: 1px solid #333; pt-20px; margin-top: 20px; padding-top: 20px;">
-                    <p style="color: #00ff41; font-family: monospace;">
-                        > [MESSAGE] Ready for deployment at Grab.
+                <div style="border-top: 1px solid #333; margin-top: 20px; padding-top: 20px;">
+                    <p style="color: #00ff41; font-family: monospace;">> [MESSAGE] Ready for deployment at Grab.
                         <span style="display: inline-block; width: 10px; height: 18px; background: #00ff41; vertical-align: middle; animation: blink 1s infinite;"></span>
                     </p>
                 </div>
             </div>
         </div>
     </section>
-
-    <div id="hangmanModal" class="modal">
-        <div class="modal-content">
-            <div class="terminal-window">
-                <div class="terminal-header">
-                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                    <span style="color: #666; font-size: 0.8rem; margin-left: 10px;">hangman_v2.py</span>
-                    <span class="close-btn" onclick="document.getElementById('hangmanModal').style.display='none'">&times;</span>
-                </div>
-                <div class="terminal-body"> <pre>
-import random
-animals = ("baboon", "flamingo", "terrapin", "lioness", "capybara", "beaver", "iguana", "jaguar", "antelope", "chimpanzee", "pangolin", "platypus", "kangaroo", "schnauzer", "salmon", "ostrich", "cougar", "buffalo", "grouper", "reindeer", "chihuahua", "chameleon", "orangutan", "chinchilla")
-
-drawing = {0: ("   ",
-                   "   ",
-                   "   "),
-               1: (" 😒 ",
-                   "   ",
-                   "   "),
-               2: (" 😒 ",
-                   "  | ",
-                   "   "),
-               3: (" 😒 ",
-                   "🫲| ",
-                   "   "),
-               4: (" 😒 ",
-                   "🫲|🤌",
-                   "   "),
-               5: (" 😒 ",
-                   "🫲|🤌",
-                   "🦶  "),
-               6: (" 😒 ",
-                   "🫲|🤌",
-                   "🦶 🦵")}
-
-def display_man(wrong_guesses):
-    for line in drawing[wrong_guesses]:
-        print(line)
-
-def display_hint(hint):
-    print(" ".join(hint))
-
-def display_answer(answer):
-    print(" ".join(answer))
-
-def main():
-    answer = random.choice(animals)
-    hint = ["_"] * len(answer)
-    wrong_guesses = 0
-    guessed_letters = set()
-    is_running = True
-
-    while is_running:
-        display_man(wrong_guesses)
-        display_hint(hint)
-        guess = input(f"enter a letter ({len(answer)}) letters: ").lower()
-
-        if guess in answer:
-            for index in range(len(answer)):
-                if answer[index] == guess:
-                    hint[index] = guess
-        else:
-            wrong_guesses += 1
-
-        if "_" not in hint:
-            display_man(wrong_guesses)
-            display_answer(answer)
-            print()
-            print("**********")
-            print("YOU WIN !!")
-            print("**********")
-            is_running = False
-        elif wrong_guesses >= len(drawing) - 1:
-            display_man(wrong_guesses)
-            display_answer(answer)
-            print()
-            print("***********")
-            print("YOU LOSE !!")
-            print("***********")
-            is_running = False
-
-if __name__ == "__main__":
-    main()
-
-</pre>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div id="logModal" class="modal">
         <div class="modal-content">
@@ -562,12 +439,12 @@ if __name__ == "__main__":
                     <pre style="color: #a0a0a0;">
 [DETECTION] SQL Injection attempt on /admin/login.
 [ANALYSIS] Input sanitized via parameterized queries.
-[STATUS] Ready for Grab Infrastructure Deployment.
-                    </pre>
+[STATUS] Ready for Grab Infrastructure Deployment.</pre>
                 </div>
             </div>
         </div>
     </div>
+
     <div id="skillModal" class="modal">
         <div class="modal-content">
             <div class="terminal-window">
@@ -589,34 +466,24 @@ if __name__ == "__main__":
 
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
-        // Main Hero Typing Effect
         new Typed('#typed', {
             strings: ['Establishing Secure Connection...', 'Analyzing Attack Lifecycle...', 'Ready for Deployment.'],
             typeSpeed: 50, backSpeed: 30, loop: true
         });
 
-        // 2. MODAL LOGIC (Wrapped in script tags so it works!)
         let typingTimer;
-
         function openModal(title, text) {
-            // Clear any existing typing animation
             clearTimeout(typingTimer);
-            
-            // Set the Header
             document.getElementById('modal-title').innerText = title + ".exe";
-            
-            // Reset and show the modal
             const modalBody = document.getElementById('modal-body-text');
             modalBody.innerText = "> "; 
             document.getElementById('skillModal').style.display = "flex";
-
-            // Start typing effect
             let i = 0;
             function typeWriter() {
                 if (i < text.length) {
                     modalBody.innerText += text.charAt(i);
                     i++;
-                    typingTimer = setTimeout(typeWriter, 20); // 20ms per character
+                    typingTimer = setTimeout(typeWriter, 20);
                 }
             }
             typeWriter();
@@ -627,17 +494,12 @@ if __name__ == "__main__":
             clearTimeout(typingTimer);
         }
 
-        // Close if user clicks outside the box
         window.onclick = function(event) {
             let skillModal = document.getElementById('skillModal');
-            let hangmanModal = document.getElementById('hangmanModal');
             let logModal = document.getElementById('logModal');
-            
             if (event.target == skillModal) closeModal();
-            if (event.target == hangmanModal) hangmanModal.style.display = "none";
             if (event.target == logModal) logModal.style.display = "none";
         }
-        
     </script>
 </body>
 </html>
