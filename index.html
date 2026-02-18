@@ -273,7 +273,29 @@
             font-weight: bold;
             letter-spacing: 1px;
         }
-    
+        /* Import JetBrains Mono with full weight support */
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap');
+        
+        /* Global Font Override */
+        * {
+            font-family: 'JetBrains Mono', monospace !important;
+        }
+        
+        /* Specific styling for the Cyber Aesthetic */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        p, span, li, td, th {
+            font-weight: 400;
+        }
+        
+        /* Ensure code blocks look like your actual Python source images */
+        code, pre {
+            font-family: 'JetBrains Mono', monospace !important;
+            font-weight: 500;
+        }
         /* Utilities */
         .tag { background: #1a1a1a; color: var(--terminal-green); padding: 5px 10px; font-size: 0.75rem; margin: 4px; display: inline-block; border: 1px solid #333; }
         .bullet-list { list-style-type: none; padding-left: 0; margin-left: 0; }
