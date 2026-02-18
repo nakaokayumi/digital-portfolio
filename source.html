@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YUMI_SEC | Source Code Analysis</title>
+    <style>
+        :root {
+            --bg-black: #050505;
+            --terminal-green: #00ff41;
+            --neon-red: #ff3131;
+        }
+        body {
+            background-color: var(--bg-black);
+            color: #d1d1d1;
+            font-family: 'Consolas', 'Courier New', monospace;
+            margin: 0;
+            padding: 40px;
+            line-height: 1.5;
+        }
+        .code-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #0d0d0d;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        .code-header {
+            background: #1a1a1a;
+            padding: 10px 20px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        pre {
+            padding: 20px;
+            margin: 0;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        /* Simple Syntax Highlighting */
+        .keyword { color: #ff79c6; } /* def, import, if */
+        .string { color: #f1fa8c; }  /* "strings" */
+        .comment { color: #6272a4; font-style: italic; }
+        .function { color: #50fa7b; } /* function names */
+        
+        .back-btn {
+            color: var(--neon-red);
+            text-decoration: none;
+            font-size: 0.8rem;
+            border: 1px solid var(--neon-red);
+            padding: 5px 15px;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: var(--neon-red);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span style="color: var(--terminal-green)">hangman_logic.py</span>
+            <a href="index.html" class="back-btn">RETURN</a>
+        </div>
+        <pre><code><span class="keyword">import</span> random
+
+animals = (<span class="string">"baboon"</span>, <span class="string">"flamingo"</span>, <span class="string">"lioness"</span>, <span class="string">"jaguar"</span>, <span class="string">"chimpanzee"</span>, <span class="string">"pangolin"</span>)
+
+drawing = {
+    0: (<span class="string">"   "</span>, <span class="string">"   "</span>, <span class="string">"   "</span>),
+    1: (<span class="string">" 😟 "</span>, <span class="string">"   "</span>, <span class="string">"   "</span>),
+    2: (<span class="string">" 😟 "</span>, <span class="string">" | "</span>, <span class="string">"   "</span>),
+    3: (<span class="string">" 😟 "</span>, <span class="string">"🫲| "</span>, <span class="string">"   "</span>),
+    4: (<span class="string">" 😟 "</span>, <span class="string">"🫲|🤌"</span>, <span class="string">"   "</span>),
+    5: (<span class="string">" 😟 "</span>, <span class="string">"🫲|🤌"</span>, <span class="string">"🦶  "</span>),
+    6: (<span class="string">" 😟 "</span>, <span class="string">"🫲|🤌"</span>, <span class="string">"🦶 🦵"</span>)
+}
+
+<span class="keyword">def</span> <span class="function">display_man</span>(wrong_guesses):
+    <span class="keyword">for</span> line <span class="keyword">in</span> drawing[wrong_guesses]:
+        <span class="keyword">print</span>(line)
+
+<span class="keyword">def</span> <span class="function">main</span>():
+    answer = random.choice(animals)
+    hint = [<span class="string">"_"</span>] * <span class="keyword">len</span>(answer)
+    wrong_guesses = 0
+    is_running = <span class="keyword">True</span>
+
+    <span class="keyword">while</span> is_running:
+        display_man(wrong_guesses)
+        <span class="keyword">print</span>(<span class="string">" "</span>.join(hint))
+        guess = <span class="keyword">input</span>(<span class="string">"Enter a letter: "</span>).lower()
+
+        <span class="keyword">if</span> guess <span class="keyword">in</span> answer:
+            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="keyword">len</span>(answer)):
+                <span class="keyword">if</span> answer[i] == guess:
+                    hint[i] = guess
+        <span class="keyword">else</span>:
+            wrong_guesses += 1
+
+        <span class="keyword">if</span> <span class="string">"_"</span> <span class="keyword">not</span> <span class="keyword">in</span> hint:
+            <span class="keyword">print</span>(<span class="string">"YOU WIN!"</span>)
+            is_running = <span class="keyword">False</span>
+        <span class="keyword">elif</span> wrong_guesses >= 6:
+            <span class="keyword">print</span>(<span class="string">"YOU LOSE!"</span>)
+            is_running = <span class="keyword">False</span>
+
+<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
+    main()</code></pre>
+    </div>
+
+</body>
+</html>
