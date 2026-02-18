@@ -263,7 +263,29 @@
             filter: brightness(1.2);
             transform: translateY(-2px);
         }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 12px 20px;
+            background: transparent;
+            color: var(--red);
+            border: 1px solid var(--red);
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            white-space: nowrap;
+        }
         
+        .btn-secondary:hover {
+            background: rgba(255, 0, 0, 0.1);
+            box-shadow: 0 0 10px var(--red-glow);
+        }
+
     </style>
 </head>
 <body>
@@ -318,8 +340,15 @@
             <div class="artifact-card">
                 <h4 style="color: var(--terminal-green);">[ PROJECT: HANGMAN_V2 ]</h4>
                 <p>Python logic engine with ASCII state rendering for educational security simulations.</p>
-                <button onclick="let m = document.getElementById('hangmanModal'); m.style.display='flex'" class="terminal-btn">VIEW SOURCE</button>
-            </div>
+                <div class="card-footer" style="display: flex; gap: 10px; margin-top: 20px;">
+                    <a href="https://github.com/nakaokayumi/digital-portfolio" target="_blank" class="btn-secondary">
+                        VIEW SOURCE
+                    </a>
+                
+                    <a href="game.html" class="btn-primary" style="text-decoration: none; text-align: center; flex-grow: 1;">
+                        LAUNCH MISSION
+                    </a>
+                </div>
 
             <div class="artifact-card">
                 <h4 style="color: var(--terminal-green);">[ EVIDENCE: LOG_CAPTURE ]</h4>
