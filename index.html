@@ -16,7 +16,6 @@
             --red-glow: rgba(204, 0, 0, 0.5);
         }
     
-        /* Base Reset */
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
     
@@ -28,7 +27,6 @@
             overflow-x: hidden;
         }
     
-        /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
@@ -63,7 +61,6 @@
             text-shadow: 0 0 8px var(--neon-red);
         }
     
-        /* Hero Section */
         header {
             height: 100vh;
             display: flex;
@@ -77,7 +74,6 @@
         header h1 { font-size: 4.5rem; margin: 10px 0; color: white; }
         header h1 span { color: var(--neon-red); text-shadow: 0 0 20px rgba(255, 49, 49, 0.4); }
     
-        /* Layout Sections */
         section { padding: 100px 10%; min-height: 80vh; }
         
         h2 { 
@@ -97,7 +93,6 @@
             align-items: stretch; 
         }
     
-        /* Terminal Window Styles */
         .terminal-window {
             background: #000;
             border: 1px solid #333;
@@ -128,7 +123,6 @@
             color: #d1d1d1;
         }
     
-        /* Artifact & Skill Cards */
         .artifact-card, .skill-category {
             background: #0a0a0a;
             border: 1px solid #222;
@@ -147,7 +141,6 @@
             background: #111;
         }
     
-        /* Buttons */
         .terminal-btn {
             border: 1px solid var(--neon-red);
             padding: 8px 16px;
@@ -218,7 +211,6 @@
             box-shadow: 0 0 10px var(--red-glow);
         }
     
-        /* Timeline Styles */
         .timeline { border-left: 2px solid var(--grab-red); margin-left: 20px; padding-left: 30px; }
         .exp-item { position: relative; margin-bottom: 50px; }
         .exp-item::before {
@@ -227,7 +219,6 @@
             box-shadow: 0 0 10px var(--neon-red);
         }
     
-        /* Modals */
         .modal {
             display: none; 
             position: fixed;
@@ -273,15 +264,12 @@
             font-weight: bold;
             letter-spacing: 1px;
         }
-        /* Import JetBrains Mono with full weight support */
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap');
         
-        /* Global Font Override */
         * {
             font-family: 'JetBrains Mono', monospace !important;
         }
         
-        /* Specific styling for the Cyber Aesthetic */
         h1, h2, h3, h4 {
             font-weight: 700;
             letter-spacing: 1px;
@@ -291,12 +279,10 @@
             font-weight: 400;
         }
         
-        /* Ensure code blocks look like your actual Python source images */
         code, pre {
             font-family: 'JetBrains Mono', monospace !important;
             font-weight: 500;
         }
-        /* Utilities */
         .tag { background: #1a1a1a; color: var(--terminal-green); padding: 5px 10px; font-size: 0.75rem; margin: 4px; display: inline-block; border: 1px solid #333; }
         .bullet-list { list-style-type: none; padding-left: 0; margin-left: 0; }
         .bullet-list li { margin-bottom: 10px; display: flex; align-items: flex-start; }
