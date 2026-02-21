@@ -26,7 +26,6 @@
             overflow: hidden;
         }
 
-        /* Navigation Style matching Main Portfolio */
         .nav-back {
             position: fixed;
             top: 20px;
@@ -52,7 +51,6 @@
             box-shadow: 0 0 15px var(--neon-red);
         }
 
-        /* Game Container */
         .terminal-window {
             width: 90%;
             max-width: 600px;
@@ -79,8 +77,7 @@
             text-align: center;
         }
 
-        /* Hangman ASCII Area */
-        .hangman-box {
+\        .hangman-box {
             font-size: 2.5rem;
             height: 120px;
             margin-bottom: 20px;
@@ -99,7 +96,6 @@
             text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
         }
 
-        /* Keyboard Styles */
         .keyboard {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
@@ -166,30 +162,26 @@
     <script>
         const animals = ["BABOON", "FLAMINGO", "LIONESS", "JAGUAR", "CHIMPANZEE", "PANGOLIN", "CAPYBARA", "PLATYPUS"];
         
-        // Emoji-based drawing from your Python script
         const drawings = [
-            " \n \n ",                      // 0
-            " 😟 \n \n ",                   // 1
-            " 😟 \n | \n ",                 // 2
-            " 😟 \n🫲| \n ",                // 3
-            " 😟 \n🫲|🤌\n ",               // 4
-            " 😟 \n🫲|🤌\n🦶 ",              // 5
-            " 😟 \n🫲|🤌\n🦶 🦵"             // 6
+            " \n \n ",                      
+            " 😟 \n \n ",                   
+            " 😟 \n | \n ",                 
+            " 😟 \n🫲| \n ",                
+            " 😟 \n🫲|🤌\n ",               
+            " 😟 \n🫲|🤌\n🦶 ",              
+            " 😟 \n🫲|🤌\n🦶 🦵"             
         ];
 
         let answer, hint, wrongGuesses;
 
        function initGame() {
-            // Select random target
             answer = animals[Math.floor(Math.random() * animals.length)].toUpperCase();
             hint = Array(answer.length).fill("_");
             wrongGuesses = 0;
         
-            // The logic to let the player know it's an animal
             document.getElementById('status').innerText = "TARGET_ACQUIRED: BIOLOGICAL ENTITY (ANIMAL)";
             document.getElementById('status').className = "status-msg";
             
-            // Optional: Update a specific "Category" element if you have one
             if(document.getElementById('category-display')) {
                 document.getElementById('category-display').innerText = "DATA_TYPE: KINGDOM_ANIMALIA";
             }
