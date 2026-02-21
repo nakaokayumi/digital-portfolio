@@ -5,13 +5,11 @@ import logging
 
 app = Flask(__name__)
 
-# CONFIGURING AUDIT LOGS (For PDPA/Grab Compliance)
 logging.basicConfig(filename='audit.log', level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 def init_db():
     conn = sqlite3.connect('users.db')
-    # Parameterized query to create table safely
     conn.execute('CREATE TABLE IF NOT EXISTS users (username TEXT, password TEXT)')
     conn.close()
 
@@ -20,7 +18,6 @@ def login():
     username = request.form['username']
     password = request.form['password']
     
-    # SECURE DATABASE ACCESS: Parameterized query prevents SQLi
     conn = sqlite3.connect('users.db')
     cursor = conn.execute('SELECT password FROM users WHERE username = ?', (username,))
     user = cursor.fetchone()
@@ -34,4 +31,4 @@ def login():
 
 if __name__ == '__main__':
     init_db()
-    app.run(debug=False) # Debug off for security
+    app.run(debug=False) 
